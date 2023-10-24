@@ -4,6 +4,6 @@ namespace App\Enums;
 
 class UserRole
 {
-    const ADMIN = 'admin';
-    const USER = 'user';
+    const ADMIN = 'Administrador';
+    const SOPORTE = 'Soporte';
 }
