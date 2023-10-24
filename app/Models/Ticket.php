@@ -10,7 +10,7 @@ class Ticket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'dni', 'fullnames', 'priority', 'category_id', 'sector', 'subject', 'description', 'status', 'assigned_admin_id',
+        'dni', 'fullnames', 'priority', 'category_id', 'sector', 'subject', 'description', 'status', 'assigned_user_id',
     ];
 
     public $timestamps = true;
@@ -22,6 +22,6 @@ class Ticket extends Model
 
     public function assignedAdmin()
     {
-        return $this->belongsTo(User::class, 'assigned_admin_id');
+        return $this->belongsTo(User::class, 'assigned_user_id');
     }
 }

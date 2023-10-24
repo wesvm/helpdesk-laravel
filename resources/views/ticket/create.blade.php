@@ -72,4 +72,8 @@
         <button type="submit" class="btn btn-primary">Registrar ticket</button>
     </form>
 </div>
+
+<div class="text-end">
+    <a href="{{route('login')}}">Login</a>
+</div>
 @endsection

@@ -43,7 +43,7 @@ class TicketController extends Controller
         $ticket->description = $request->input('description');
         $ticket->subject = $request->input('subject');
         $ticket->status = TicketStatus::PENDIENTE;
-        $ticket->assigned_admin_id = null;
+        $ticket->assigned_user_id = null;
 
         $ticket->save();
 

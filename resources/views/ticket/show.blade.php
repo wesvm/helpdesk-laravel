@@ -46,8 +46,12 @@
             </table>
 
             {{ $tickets->links() }}
+
         </div>
 
+    </div>
+    <div class="text-end">
+        <a href="{{route('login')}}">Login</a>
     </div>
 </div>
 @endsection
