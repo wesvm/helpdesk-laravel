@@ -20,7 +20,7 @@ class AuthController extends Controller
             'firstnames' => 'required|string|max:255',
             'lastnames' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'required|string|confirmed|min:5',
         ]);
 
         $user = new User([
@@ -28,9 +28,10 @@ class AuthController extends Controller
             'last_names' => $request->lastnames,
             'username' => $request->username,
             'password' => bcrypt($request->password),
-            'role' => UserRole::ADMIN,
+            'role' => UserRole::SOPORTE,
         ]);
 
+        $user->assignRole(UserRole::SOPORTE);
         $user->save();
 
         return redirect()->route('index')->with('success', 'User successfully created!');
@@ -39,7 +40,7 @@ class AuthController extends Controller
     public function showLoginForm()
     {
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard.index');
         }
 
         return view('auth.login');
@@ -50,7 +51,6 @@ class AuthController extends Controller
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials)) {
-
             return redirect()->intended('/dashboard');;
         }
 
