@@ -1,4 +1,4 @@
-<div class="offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3 text-bg-dark d-block d-md-none" tabindex="-1"
+<div class="offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3 text-bg-dark d-md-none" tabindex="-1"
     id="offcanvas" aria-labelledby="offcanvasLabel">
 
     <div class="d-flex justify-content-evenly">
@@ -33,10 +33,11 @@
                         }}">Usuarios</a>
             </li>
         </ul>
-        <hr>
 
-        <a href="{{route('logout')}}" class="d-flex align-items-center text-white text-decoration-none">
-            Salir
-        </a>
     </div>
+    <hr>
+
+    <a href="{{route('logout')}}" class="d-flex align-items-center text-white text-decoration-none">
+        Salir
+    </a>
 </div>

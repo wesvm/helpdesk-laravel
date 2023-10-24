@@ -1,4 +1,4 @@
-<aside class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark d-none d-md-block" style="width: 280px">
+<aside class="d-md-flex flex-column flex-shrink-0 p-3 text-bg-dark d-none" style="width: 280px">
     <div class="text-center">
         <h3 class="fs-5 text-uppercase">{{ auth()->user()->role }}</h3>
         <p>Bienvenido</p>
