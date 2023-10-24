@@ -1,0 +1,11 @@
+.border-left-primary {
+    border-left: 0.25rem solid #4e73df !important;
+}
+
+.w-5 {
+    width: 1.25rem;
+}
+
+.h-5 {
+    height: 1.25rem;
+}

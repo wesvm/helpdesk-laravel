@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const statusBadges = document.getElementsByClassName('task-status');
 
     const statusColors = {
-        'En progreso': 'bg-success',
-        'Cerrado': 'bg-primary',
-        'Abierto': 'bg-primary',
-        'Pendiente': 'bg-warning',
+        'En progreso': 'bg-warning',
+        'Cerrado': 'bg-success',
+        'Abierto': 'bg-warning',
+        'Pendiente': 'bg-primary',
     };
 
     for (let i = 0; i < statusBadges.length; i++) {
