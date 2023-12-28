@@ -17,8 +17,9 @@ class SoporteController extends Controller
     {
         $tickets = Ticket::query();
         $tickets = $tickets->latest()->paginate(5);
+        $ticketStatus = TicketStatus::classConstants();
 
-        return view('soporte.index', compact('tickets'));
+        return view('soporte.index', compact('tickets', 'ticketStatus'));
     }
 
     /**
@@ -82,7 +83,7 @@ class SoporteController extends Controller
         $ticket->status = $newStatus;
         $ticket->save();
 
-        return redirect()->route('soporte.index');
+        return redirect()->route('soporte.index')->with('success', 'Ticket has been updated');;
     }
 
     /**

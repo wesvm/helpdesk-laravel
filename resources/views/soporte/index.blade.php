@@ -33,19 +33,21 @@
                     <span class="badge task-status fw-bold fs-6">{{ $ticket->status }}</span>
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('soporte.edit', $ticket->id)}}">Editar</a>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#editModal{{ $ticket->id }}">Editar</button>
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal{{ $ticket->id }}">Eliminar</button>
+                        data-bs-target="#deleteModal{{ $ticket->id }}">Eliminar</button>
                 </td>
             </tr>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal{{ $ticket->id }}" tabindex="-1"
-                aria-labelledby="exampleModalLabel{{ $ticket->id }}" aria-hidden="true">
+            <!-- Delete Modal -->
+            <div class="modal fade" id="deleteModal{{ $ticket->id }}" tabindex="-1"
+                aria-labelledby="deleteModalLabel{{ $ticket->id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $ticket->fullnames }}</h1>
+                            <h1 class="modal-title fs-5" id="deleteModalLabel{{ $ticket->id }}">{{ $ticket->fullnames }}
+                            </h1>
                         </div>
                         <div class="modal-body">
                             <p>Deseas eliminar este el ticket?</p>
@@ -56,6 +58,43 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div class="modal fade" id="editModal{{ $ticket->id }}" tabindex="-1"
+                aria-labelledby="editModalLabel{{ $ticket->id }}" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="editModalLabel{{ $ticket->id }}">{{$ticket->fullnames}} -
+                                {{$ticket->dni}}</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>{{$ticket->subject}}</strong></p>
+                            <p>{{$ticket->description}}</p>
+                            <form action="{{route('soporte.update', ['soporte' => $ticket->id])}}" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <div class="mb-3">
+                                    <label for="status">Cambiar estado del ticket</label>
+                                    <select name="status" id="status">
+                                        @foreach($ticketStatus as $status)
+                                        <option value="{{ $status }}" {{ $ticket->status == $status ? 'selected' :
+                                            '' }}>
+                                            {{ $status }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                                </div>
                             </form>
                         </div>
                     </div>
